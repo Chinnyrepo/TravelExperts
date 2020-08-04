@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="author" content="Chinenye Okpalanze">
+	<meta name="course code" content="CPRG 210">
+	<meta name="course module" content="WEB APP DEVELOPMENT">
+  	<meta name="date" content="7/14/2020">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta charset="UTF-8">
+	<title>Travel Experts - Contact Us</title>
+    <link rel="stylesheet" type="text/css" href="../css/stylec.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"crossorigin="anonymous"></script> -->
+</head>
+<body>
+	<div class="header">
+        <a class="logo"></a>
+        <span class="welcome">Travel Experts</span>
+		<div class="header-right">
+			<a class="active" href="index.html">Home</a>
+			<a class="active" href="aboutus.html">About Us</a>
+			<a class="active" href="contactus.html">Contact Us</a>
+			<a class="active" href="packages.html">Packages</a>
+			<a class="active" href="register.html">Register</a>
+		</div>
+	</div>
+		
+	<div class="flex-container">
+		<div style="flex-grow: 8">
+			<h1>Our contact:</h1>
+    <div class="container m-5" style="overflow-x:auto;">
+        <table class='table table-hover'>
+            <thead class="thead-dark">
+                <tr>
+                    <td>Agency ID</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>Province</td>
+                    <td>Postal Code</td>
+                    <td>Country</td>
+                    <td>Phone</td>
+                    <td>Fax</td>
+                </tr>
+            </thead>
+            <tbody id='tb1'></tbody>
+        </table>
+    
+        <h3>Agent Contact Information </h3>
+        <table class='table table-hover' id=T2 style="display: none;">
+            <thead class="thead-dark">
+                <tr>
+                    <td>Agent ID</td>
+                    <td>First Name</td>
+                    <td>Middle Name</td>
+                    <td>Last Name</td>
+                    <td>Business Phone Number</td>
+                    <td>Email</td>
+                    <td>Position</td>
+                    <td>AgencyId</td>
+                </tr>
+            </thead>
+            <tbody id='tb2'></tbody>
+		</table>
+	</div>
+</div>
+</div>	
+	
+	<div class="flex-container">
+		<div style="flex-grow: 8">
+			<div class="container">
+                <div id="error_message"></div>
+				<form action="/contactus"  method = "POST" id="myform" onsubmit = "thankyou">
+				  
+                    <label for="fname">First Name</label> 
+                    <span class = "text-primary" style="display: none;"> (Please enter your first name)</span> 
+					<input type="text" id="firstname" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="firstname" placeholder="Your First Name.." required>
+				
+                    <label for="lname">Last Name</label> 
+                    <span class = "text-primary" style="display: none;"> (Please enter your last name)</span> 
+					<input type="text" id="lastname" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="lastname" placeholder="Your Last Name.." required>
+				
+                    <label for="email">Email</label>
+                    <span class = "text-primary" style="display: none;"> (Please enter your email)</span> 
+					<input type="text" id="email"onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="email" placeholder="Your Email here.." required>
+
+                    <label for="subject">Subject</label> 
+                    <span class = "text-primary" style="display: none;"> (Please enter a subject)</span> 
+					<input type="text" id="subject" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="subject" placeholder="Your Subject here.." required>
+
+                    <label for="message">Message</label> 
+                    <span class = "text-primary" style="display: none;"> (Please enter your message)</span> 
+					<textarea id="message" name="message" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" placeholder="Write something.." style="height:200px" required></textarea>
+				
+					<input type="submit"  value="Submit" onclick="return validate();">	
+				  
+				</form>
+			</div>
+		</div>
+	<div>
+
+<script>
+    //Using JQuery to send AJAX request and get the data, then load the data in the form
+    $(document).ready(function () {
+        $.get("/contactdata", function (data, status) {// sending the AJAX request
+            if (data) {
+                const tb1 = document.getElementById('tb1');
+                for (let i = 0; i < data.length; i++) {
+                    const tr = document.createElement('tr');
+                    tr.onclick = () => {getAgents(data[i].AgencyId)};
+                    if (data[i].AgencyId == 1) tr.className = "table-info";
+                    else tr.className = "table-warning";
+                    for (let j = 0; j < Object.keys(data[i]).length; j++) {
+                        const td = document.createElement('td');
+                        const key = Object.keys(data[i])[j];
+                        td.innerText = data[i][key];
+                        tr.appendChild(td);
+                    }
+                    tb1.appendChild(tr);
+                }
+            }
+        });
+    });
+
+    // This function will be called when the user clicks on one of the table cells for the agencies
+    function getAgents(agencyId) {    // Target is the tble cell (td)
+        // target.currentTarget.id this has the id of the target agency we stored as a TR.id
+        $.get("/contactdata?agentId=" + agencyId,
+            function (data, status) {// sending the AJAX request to get the agents for the requested Agency ID
+                if (data) { // Agents data
+                    console.log(data);
+                    const T2 = document.getElementById('T2');
+                    T2.setAttribute("style", "display:block");
+                    const tb2 = document.getElementById('tb2');
+                    tb2.innerHTML="";
+                        
+                    for (let i = 0; i < data.length; i++) {
+                        const tr = document.createElement('tr');
+                        if (data[i].AgencyId == 1) tr.className = "table-info";
+                        else tr.className = "table-warning";
+                        for (let j = 0; j < Object.keys(data[i]).length; j++) {
+                            const td = document.createElement('td');
+                            const key = Object.keys(data[i])[j];
+                            td.innerText = data[i][key];
+                            tr.appendChild(td);
+                        }
+                        tb2.appendChild(tr);
+                    }
+                }
+            });
+    }              
+</script> 
+<script src="../JS/contactus.js"></script>
+
+
+</body>
+</html>

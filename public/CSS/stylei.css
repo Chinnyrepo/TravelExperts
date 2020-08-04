@@ -1,0 +1,177 @@
+* {box-sizing: border-box;}
+
+/* general style on the body */
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(../Images/water.jpg);
+}
+
+/* header container to position logo, welcome message and navigation bar to be on the same line */
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+  text-align: left; 
+}
+
+/* text decoration for a tag in the header section */
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 1vw; 
+  line-height: 25px;
+  border-radius: 25px;
+  border-top-left-radius: 8px;
+  border-top-left-radius: 8px;  
+}
+
+ /* display the background image of the logo and make it responsive*/
+.header a.logo {
+  background-image: url(../images/photo3.gif);
+  height: auto;
+  background-size: cover;
+  max-width: 100%;
+  width: 50px;
+  padding: 30px;
+}
+
+/* add some style with hover synthax to have the nav bars change color when hovered around it */
+.header a:hover {
+  background-color: blue;
+  color: red;
+}
+
+/* active effect on the navigation bar and positioning */
+.header a.active {
+  background-color: royalblue;
+  margin: 0px 5px 0px 5px;
+}
+
+.header-right {
+  float: right;  
+}
+
+/* to make the navigation bar, welcome bar and logo to be responsive */
+@media screen and (max-width: 300px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+}
+
+ /* Increase the font size of the welcome message */
+.welcome {
+   font-size: 2.5vw;
+   margin: auto;
+   text-shadow: 2px 2px royalblue;
+   font-weight: 500;
+}
+
+/* style for the hero image */
+.hero-image {
+   background-image: url("../images/airport2.jpeg");  
+   height: 500px;  /* Set a specific height */
+ /* Position and center the image to scale nicely on all screens */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+}
+
+/* text styling  */
+.text {
+    background-color: lightgrey;
+    width: 100%;
+    border: 7px solid rgb(34, 0, 128);
+    padding: 7px;
+    margin: 0px;
+    font-size: 2vw;
+    text-align: center;
+}
+  
+/* Create three equal columns that floats next to each other */
+.location{
+    float: left;
+    width: 25%;
+    height: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+/* style to put transition effect and style the radius on the images */
+img{
+    transition: all 0.25s ease;
+    border-radius: 25px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px; 
+}
+
+/*mouse hover effect to make the images increase in size  */
+.location:hover img {
+    transform:scale(1.15);
+}
+  
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+.location {
+    width: 100%;
+    }
+}
+  
+/* Make the pictures responsive to smaller screen */
+.responsive{
+    width: 100%;
+    height: auto;
+}
+
+/* style for picture gallery */
+.event{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    text-align: center;
+    color: white;
+}
+/* style for the picture gallery text */
+.design{
+  color: white;
+  font-style: italic;
+}
+
+/* style for table picture gallery with javascript */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    text-align: center;
+    padding: 8px;
+    border: 2px solid black;
+}
+  
+tr:nth-child(even) {
+    background-color: #f2f2f2;}
+
+tr:nth-child(odd) {
+    background-color: #92a8d1;}
+
+/* Footer */
+.footer {
+    padding: 10px;
+    text-align: center;
+    background: #ddd;
+}
+  
+  

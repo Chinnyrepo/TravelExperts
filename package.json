@@ -13,6 +13,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "mongodb": "^3.6.0",
+    "mongodb-autoincrement": "^1.0.1",
     "mongoose": "^5.9.25",
     "mongoose-validate": "latest",
     "morgan": "~1.9.1",

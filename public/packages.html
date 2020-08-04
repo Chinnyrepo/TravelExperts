@@ -1,42 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang= "en">
 <head>
-<meta name="author" content="Chinenye Okpalanze">
-<meta name="course code" content="CPRG 210">
-<meta name="course module" content="WEB APP DEVELOPMENT">
-<meta name="date" content="7/14/2020">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" >
-<title>Travel Experts - Vacation Packages</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylea.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  
+  <title>Travel Experts - Vacation Packages</title>
+  
+  <!--Adding external CSS-->
+  <link rel="stylesheet" type="text/css" href="../css/stylea.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!--For Bootstrap 4-->
+  <link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
-<style>
-</style>
-</head>
+
 <body>
-    <div class="header">
-        <a class="logo"></a>
-        <span class="welcome">Travel Experts</span>
-        <div class="header-right">
-          <a class="active" href="index.html">Home</a>
-          <a class="active" href="aboutus.html">About Us</a>
-          <a class="active" href="contactus.html">Contact Us</a>
-          <a class="active" href="packages.html">Packages</a>
-          <a class="active" href="register.html">Register</a>
-        </div>
+  <!--Tittle and Navigation Bar-->
+  <div class="header">
+    <a class="logo"></a>
+    <span class="welcome">Travel Experts</span>
+    <div class="header-right">
+      <a class="active" href="index.html">Home</a>
+      <a class="active" href="aboutus.html">About Us</a>
+      <a class="active" href="contactus.html">Contact Us</a>
+      <a class="active" href="packages.html">Packages</a>
+      <a class="active" href="register.html">Register</a>
     </div>
- 
-   
-    
-<!-- Footer -->
+  </div>
+
+  <!--Table using bootstrap 4-->
+  <div class= "container">
+    <h2 class= "font-weight-bold">Vacation Packages</h2><br>
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <!--<td>Package ID</td>-->
+          <td>Package Name</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Description</td>
+          <td>Base Price</td>
+          <td></td>
+        </tr>
+      </thead>
+
+      <tbody id='tb1'>
+      </tbody>
+    </table>
+
+  </div>
+
+  <script>
+    let today = new Date();
+    $(document).ready(function () {
+      $.get("/packages", today, function (data, status) {
+        //info = data;
+        if (data != "No Data"){
+          const tb1 = document.getElementById('tb1');
+          for (let row = 0; row < data.length; row++) {
+            const tr = document.createElement('tr');
+
+            //for (let col = 1; col < Object.keys(data[row]).length; col++) {
+            for (let col = 2; col < 8; col++) {
+              const td = document.createElement('td');
+              const orderButton = document.createElement('button');
+              const keyArray= Object.keys(data[row]);
+              const key = keyArray[col];
+              
+              if (col == 3 || col == 4) {
+                let dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+                let date = new Date (data[row][key]) ;
+                td.innerText = date.toLocaleString('en-CA', dateOptions);
+                //td.innerText = date.toDateString();
+                if (date < today) {
+                  td.style = 'color: rgba(255,0,0,1)';
+                }
+                console.log(data[row][key]);
+                console.log(date);
+                console.log('--');
+              }
+              else if (col == 6) {
+                let price = parseFloat(data[row][key].$numberDecimal);
+                td.innerText = `$ ${price}`;
+              }
+              else if (col == 7) {
+                orderButton.setAttribute('type', 'button');
+                orderButton.setAttribute('class', 'btn btn-primary');
+                orderButton.setAttribute('onclick', 'window.location.href="orderpage.html"');
+                orderButton.innerText = 'Order';             
+                td.appendChild(orderButton);
+              }
+              else { 
+                td.innerText = data[row][key];
+              }    
+              tr.appendChild(td);
+            }
+            tb1.appendChild(tr);
+          }
+        }
+        else {
+          const tr = document.createElement('tr');
+          tr.innerText = 'No package available';
+          tb1.appendChild(tr);
+        }
+      });
+    });
+
+  </script>
+
+
+  <!-- Footer -->
   <div class="footer">
-   <p>Copyright &copy; 2020. All Rights Reserved</p>
+    <p>Copyright &copy; 2020. All Rights Reserved</p>
   </div>
 </body>
+
 </html>

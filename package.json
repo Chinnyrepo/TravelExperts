@@ -4,7 +4,7 @@
   "description": "TravelExpertWebsite",
   "private": true,
   "scripts": {
-    "start": "nodemon datamongo.js",
+    "start": "nodemon app.js",
     "nm": "nodemon app.js"
   },
   "dependencies": {

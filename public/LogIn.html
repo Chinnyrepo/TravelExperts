@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="author" content="Chinenye Okpalanze">
+  <meta name="course code" content="CPRG 210">
+  <meta name="course module" content="WEB APP DEVELOPMENT">
+  <meta name="date" content="7/14/2020">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../CSS/styleo.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <title>Log In Page</title>
+</head>
+<body>
+  <div class="header">
+    <a class="logo"></a>
+    <span class="welcome">Welcome to Travel Experts</span>
+    <div class="header-right">
+    <a class="active" href="../html/index.html">Home</a>
+    <a class="active" href="../html/contact.html">Contact</a>
+    <a class="active" href="../html/register.html">Register</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome Back!</h1>
+  <form action="/registerdata" method="POST" class="needs-validation" novalidate onsubmit="validate(this)">
+    
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Registered Email</label>
+        <span class = "text-primary" style="display: none;"> (Please enter your Registered Email)</span>
+        <input type="text" class="form-control" id="lastName" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="lastName" required>
+        <div class="valid-feedback">Valid .</div>
+        <div class="invalid-feedback">Please Enter a Valid Email Address.</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password">Password</label>
+        <span class = "text-primary" style="display: none;"> (Please enter your Password)</span>
+        <input type="password" class="form-control" id="password" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="password" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please Enter a Valid Password.</div>
+      </div>
+	  <button class="buttin" type="submit"onclick="return confirm('Confirm you want to submit the form?')">Submit</button>
+    <button class="buttin" type="reset" onclick="return confirm('Confirm you want to reset the form?')">Reset</button>
+    </form>
+      
+<script src="../JS/register.js"></script>
+</body>
+</html>

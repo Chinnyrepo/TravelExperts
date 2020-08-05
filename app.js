@@ -43,7 +43,7 @@ app.get('/contactdata', function (req, res, next) {
     if (error) return res.status(500).send('Error ' + error);
     // Get agents information 
     data.getContactData(1, (error, agents) => {
-      res.send(agencies); 
+      res.send({agencies, agents}); 
       console.log(agents)
     })
   })

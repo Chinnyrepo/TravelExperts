@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang= "en">
 <head>
-	<meta name="author" content="Chinenye Okpalanze">
-	<meta name="course code" content="CPRG 210">
-	<meta name="course module" content="WEB APP DEVELOPMENT">
-  	<meta name="date" content="7/14/2020">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<meta charset="UTF-8">
-	<title>Travel Experts - Contact Us</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylec.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"crossorigin="anonymous"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <title>Travel Experts - Contact Us</title>
+
+  <!--Adding external CSS-->
+  <link rel="stylesheet" type="text/css" href="../css/stylec.css">
+
+  <!--For Bootstrap 4-->
+  <link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>    
 </head>
+
 <body>
 	<div class="header">
         <a class="logo"></a>
@@ -103,20 +103,23 @@
 	<div>
 
 <script>
-    //Using JQuery to send AJAX request and get the data, then load the data in the form
+    var agents; // Agents data
+    //Using JQuery to send AJAX request and get the agencies & agents data, then load the data into the tables
     $(document).ready(function () {
         $.get("/contactdata", function (data, status) {// sending the AJAX request
             if (data) {
+                agents = data.agents;
+                const agencies = data.agencies; // Agencies data
                 const tb1 = document.getElementById('tb1');
-                for (let i = 0; i < data.length; i++) {
+                for (let i = 0; i < agencies.length; i++) {
                     const tr = document.createElement('tr');
-                    tr.onclick = () => {getAgents(data[i].AgencyId)};
-                    if (data[i].AgencyId == 1) tr.className = "table-info";
+                    tr.onclick = () => {getAgents(agencies[i].AgencyId)};
+                    if (agencies[i].AgencyId == 1) tr.className = "table-info";
                     else tr.className = "table-warning";
-                    for (let j = 0; j < Object.keys(data[i]).length; j++) {
+                    for (let j = 0; j < Object.keys(agencies[i]).length; j++) {
                         const td = document.createElement('td');
-                        const key = Object.keys(data[i])[j];
-                        td.innerText = data[i][key];
+                        const key = Object.keys(agencies[i])[j];
+                        td.innerText = agencies[i][key];
                         tr.appendChild(td);
                     }
                     tb1.appendChild(tr);
@@ -126,31 +129,28 @@
     });
 
     // This function will be called when the user clicks on one of the table cells for the agencies
-    function getAgents(agencyId) {    // Target is the tble cell (td)
-        // target.currentTarget.id this has the id of the target agency we stored as a TR.id
-        $.get("/contactdata?agentId=" + agencyId,
-            function (data, status) {// sending the AJAX request to get the agents for the requested Agency ID
-                if (data) { // Agents data
-                    console.log(data);
-                    const T2 = document.getElementById('T2');
-                    T2.setAttribute("style", "display:block");
-                    const tb2 = document.getElementById('tb2');
-                    tb2.innerHTML="";
-                        
-                    for (let i = 0; i < data.length; i++) {
-                        const tr = document.createElement('tr');
-                        if (data[i].AgencyId == 1) tr.className = "table-info";
-                        else tr.className = "table-warning";
-                        for (let j = 0; j < Object.keys(data[i]).length; j++) {
-                            const td = document.createElement('td');
-                            const key = Object.keys(data[i])[j];
-                            td.innerText = data[i][key];
-                            tr.appendChild(td);
-                        }
-                        tb2.appendChild(tr);
-                    }
+    function getAgents(agencyId) {
+        if (agents) { 
+            //console.log(agents);
+            const T2 = document.getElementById('T2');
+            T2.setAttribute("style", "display:block");
+            const tb2 = document.getElementById('tb2');
+            tb2.innerHTML="";
+                
+            for (let i = 0; i < agents.length; i++) {
+                if(agents[i].AgencyId != agencyId) continue;
+                const tr = document.createElement('tr');
+                if (agents[i].AgencyId == 1) tr.className = "table-info";
+                else tr.className = "table-warning";
+                for (let j = 0; j < Object.keys(agents[i]).length; j++) {
+                    const td = document.createElement('td');
+                    const key = Object.keys(agents[i])[j];
+                    td.innerText = agents[i][key];
+                    tr.appendChild(td);
                 }
-            });
+                tb2.appendChild(tr);
+            }
+        }         
     }              
 </script> 
 <script src="../JS/contactus.js"></script>

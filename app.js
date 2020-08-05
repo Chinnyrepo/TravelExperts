@@ -36,7 +36,8 @@ app.post("/contactus", (req, res) => {
     res.redirect("./thankyou1");
  });
 
- // /* GET contact us page. */
+ /* Serving request for contact info of agencies and agents from the contact us page. 
+ ** Chinenye Okpalanze*/
 app.get('/contactdata', function (req, res, next) {
   // Getting the agency information
   data.getContactData(null, (error, agencies) => {
@@ -44,7 +45,7 @@ app.get('/contactdata', function (req, res, next) {
     // Get agents information 
     data.getContactData(1, (error, agents) => {
       res.send({agencies, agents}); 
-      console.log(agents)
+      //console.log(agents)
     })
   })
 });
@@ -87,6 +88,48 @@ app.get('/packages', (req, res) => {
       }
     });
   }); 
+});
+
+/* Serving request to submit data from the order form to the database
+** Edwin GonoSantosa*/
+app.post('/orderformdata', (req, res) => {
+  let orderFormData = [req.body.packageName, req.body.fname];
+  //console.log(orderFormData); 
+  let customerNum = 0;
+  MongoClient.connect(url, function (err, db) {
+      const dbo = db.db("travelexperts");
+      // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection
+      autoIncrement.getNextSequence(dbo, "customers", function (err, autoIndex) {
+          customerNum = autoIndex;
+
+          dbo.collection("customers").insertOne({
+              CustomerId: autoIndex,
+              CustFirstName: req.body.fname,
+              CustLastNme: req.body.lname,
+              CustAddress: req.body.address1,
+              CustCity: req.body.city,
+              CustProv: req.body.prov,
+              CustPostal: req.body.postCode,
+              CustCountry: req.body.country,
+              CustHomePhone: req.body.homePhone,
+              CustBusPhone: req.body.busPhone,
+              CustEmail: req.body.email,
+              AgentId: req.body.agentId 
+          });
+          //db.close();  //do not close db here. otherwise insert record to bookings won't happen
+      });
+      
+      autoIncrement.getNextSequence(dbo, "bookings", function (err, autoIndex) {
+          dbo.collection("bookings").insertOne({
+              BookingId: autoIndex,
+              //BookingDate: req.body.bookingDate,
+              CustomerId: customerNum
+          });
+          db.close(); 
+      });
+      //db.close();  /do not close db here. otherwise insert record to customers AND bookings won't happen
+  });
+  res.end();
 });
 
 //Serving static files in Express

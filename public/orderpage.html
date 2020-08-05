@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang= "en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Travel Experts - About Us</title>
+  
+  <!--Adding external CSS-->
+  <link rel="stylesheet" type="text/css" href="../css/styler.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!--For Bootstrap 4-->
+  <link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <!--External javascript file-->
+  <script src="../JS/register.js"></script>
+  <script>
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      var results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+  </script> 
+
+</head>
+
+<body>
+  <div class="header">
+    <a class="logo"></a>
+    <span class="welcome">Travel Experts</span>
+    <div class="header-right">
+      <a class="active" href="index.html">Home</a>
+      <a class="active" href="aboutus.html">About Us</a>
+      <a class="active" href="contactus.html">Contact Us</a>
+      <a class="active" href="packages.html">Packages</a>
+      <a class="active" href="register.html">Register</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="jumbotron" >
+      <h2 class= "font-weight-bold">Customer Order Form</h2><br>
+      <form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated">
+      <!--<form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated" onsubmit="return validatePostalCode()">-->
+        <div class="form-group">
+          <label for= "packageName" class= "font-weight-bold">Selected Package ID</label>
+          <span class="text-primary" style="display: none;"><!--Package Name--></span>
+          <input class= "form-control text-body" type= "text" id= "packageName" name= "packageName" disabled>
+        </div>
+        <div class="form-group">
+          <label for= "fname" class= "font-weight-bold">First Name:</label>
+          <span class="text-primary" style="display: none;">Enter your first name</span>
+          <input class= "form-control text-body" type= "text" id= "fname" name= "fname"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div>
+        <!--
+        <div class = "form-group">
+          <label for= "lname" class= "font-weight-bold">Last Name:</label>
+          <span class="text-primary" style="display: none;">Enter your Last name</span>
+          <input class="form-control text-body" type= "text" id= "lname" name= "lname"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div>
+        <div class= "form-group">
+          <label for= "address1" class= "font-weight-bold">Address:</label>
+          <span class="text-primary" style="display: none;">Enter your address</span>
+          <input class="form-control text-body" type= "text" id= "address1" name= "address1" placeholder= "734 7th Ave SW, Suite 234"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div>
+        <div class= "form-group">
+          <label for= "city" class= "font-weight-bold">City:</label>
+          <span class="text-primary" style="display: none;">Enter city of residence</span>
+          <input class="form-control text-body" type= "text" id= "city" name= "city" placeholder= "Calgary"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div>
+        <div class= "form-group">  
+          <label for= "prov" class= "font-weight-bold">Province:</label>
+          <select class="form-control" id= "prov" name= "prov" required>
+            <option value= "AB">AB</option>
+            <option value= "NU">NU</option>  
+            <option value= "YT">YT</option>
+            <option value= "NT">NT</option>
+            <option valur= "BC">BC</option>
+            <option value= "SK">SK</option>
+            <option value= "MB">MB</option>
+            <option value= "ON">ON</option>
+            <option value= "QC">QC</option>
+            <option value= "NB">NB</option>
+            <option value= "NS">NS</option>
+            <option value= "PE">PE</option>
+            <option value= "NL">NL</option>
+          </select>
+        </div> 
+        <div class= "form-group">  
+          <label for= "postCode" class= "font-weight-bold">Postal Code:</label>
+          <span class="text-primary" style="display: none;">Enter your postal code in H0H 0H0 format</span>
+          <input class="form-control text-body" type= "text" id= "postCode" name= "postCode" placeholder= "H0H 0H0"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div> 
+        <div class= "form-group">  
+          <label for= "country" class= "font-weight-bold">Country:</label>
+          <span class="text-primary" style="display: none;">Enter your Country</span>
+          <input class="form-control text-body" type= "text" id= "country" name= "country" placeholder= "Canada"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div> 
+        <div class= "form-group">  
+          <label for= "homePhone" class= "font-weight-bold">Phone Number (Home):</label>
+          <span class="text-primary" style="display: none;">Enter a home phone number</span>
+          <input class="form-control text-body" type= "text" id= "homePhone" name= "homePhone" placeholder= "403-123-4567"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div> 
+        <div class= "form-group">
+          <label for= "busPhone" class= "font-weight-bold">Phone Number (Work):</label>
+          <span class="text-primary" style="display: none;">Enter a work phone number</span>
+          <input class="form-control text-body" type= "text" id= "busPhone" name= "busPhone" placeholder= "403-123-4567"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div>
+        --> 
+        <div class= "form-group">
+          <label for= "email" class= "font-weight-bold">Email address:</label>
+          <span class="text-primary" style="display: none;">Enter email address</span>
+          <input class="form-control text-body" type= "text" id= "email" name= "email" placeholder= "jdoe@gmail.com"
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+        </div>
+        
+        <!--Buttons to Submit and Reset-->
+        <div class= "center">
+          <button onclick= "submitForm()" class= "btn btn-primary" id= "submitButton">Submit</button>
+          <!--<button onclick= "submitForm()" class= "btn btn-primary" id= "submitButton" disabled>Submit</button>-->
+          <button onclick= "resetForm()" class= "btn btn-primary">Reset</button>
+        </div>
+      </form> 
+
+    </div>
+  </div>
+
+  <script>
+    let packageId = getUrlParameter('packageId');
+    document.getElementById('packageName').value = packageId;
+    console.log('packageID:', packageId);
+
+  </script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-//Chinenye Okpalanze
+//Chinenye Okpalanze CO
 function myFunction(element, display) {
   element.previousElementSibling.style.display = display;
 }

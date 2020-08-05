@@ -1,3 +1,4 @@
+//Chinenye Okpalanze
 function myFunction(element, display) {
   element.previousElementSibling.style.display = display;
 }

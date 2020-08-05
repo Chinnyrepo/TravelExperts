@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang= "en">
 <head>
-<meta name="author" content="Chinenye Okpalanze">
-<meta name="course code" content="CPRG 210">
-<meta name="course module" content="WEB APP DEVELOPMENT">
-<meta name="date" content="7/14/2020">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Super Group Travels - About Us</title>
-    <link rel="stylesheet" type="text/css" href="../css/styler.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Travel Experts - About Us</title>
+  
+  <!--Adding external CSS-->
+  <link rel="stylesheet" type="text/css" href="../css/styler.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!--For Bootstrap 4-->
+  <link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
   <div class="header">
     <a class="logo"></a>
@@ -31,109 +33,109 @@
   <div class="container">
     <div class="jumbotron">
       <h1>Registration Form</h1>
-  <form action="/registerdata" method="POST" class="needs-validation" novalidate onsubmit="validate(this)">
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="UserId">UserId</label>
-        <span class = "text-primary" style="display: none;"> (Please enter your UserId)</span>
-        <input type="text" class="form-control" id="UserId" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="userid" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">Password</label>
-        <span class = "text-primary" style="display: none;"> (Please enter your Password)</span>
-        <input type="password" class="form-control" id="password" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="password" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputPassword">Retype Password</label>
-        <span class = "text-primary" style="display: none;"> (Please retype your Password)</span>
-        <input type="password" class="form-control" id="retypePassword" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="retypePassword" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </div>
-    </div>
-      <div class="form-group col-md-6">
-        <label for="First Name">First Name</label>
-        <span class = "text-primary" style="display: none;"> (Please enter your First Name)</span>
-        <input type="text" class="form-control" id="firstName" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="firstName" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Last Name</label>
-        <span class = "text-primary" style="display: none;"> (Please enter your Last Name)</span>
-        <input type="text" class="form-control" id="lastName" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="lastName" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </div>
-    <div class="form-group">
-      <label for="inputAddress">Address</label>
-      <span class = "text-primary" style="display: none;"> (Please enter your Address)</span>
-      <input type="text" class="form-control" id="address1" placeholder="1234 Main St" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="address" required>
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-3">
-        <label for="inputCity">City</label>
-        <span class = "text-primary" style="display: none;"> (Please enter your City)</span>
-        <input type="text" class="form-control" id="inputCity" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="city" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputState">Province</label>
-        <span class = "text-primary" style="display: none;"> (Please select your Province)</span> 
-        <select id="inputState" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="province" required>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-          <option></option>
-          <option>Alberta</option>
-          <option>British Columbia</option>
-          <option>Manitoba</option>
-          <option>New Brunswick</option>
-          <option>Newfoundland and Labrador</option>
-          <option>Nova Scotia</option>
-          <option>Ontario</option>
-          <option>Prince Edward Island</option>
-          <option>Quebec</option>      
-          <option>Saskatchewan</option>   
-          </select>   
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputZip">Postal Code </label>
-        <span class = "text-primary" style="display: none;"> (Please enter your Postal Code)</span> 
-        <input type="text" class="form-control" id="inputpo" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="postalCode" required>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputState">Country</label>
-        <span class = "text-primary" style="display: none;"> (Please select your Country)</span> 
-        <select id="inputState" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="country" required>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-          <option></option>
-          <option>Canada</option>  
-          </select>   
-      </div>
-      <div class="form-group">
-        <div class="form-check">
-            <label class="form-check-label" for="gridCheck">
-            <input class="form-check-input" type="checkbox" id="gridCheck" name="remember" required>
-            By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>
+      <form action="/registerdata" method="POST" class="needs-validation" novalidate onsubmit="validate(this)">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="UserId">UserId</label>
+            <span class = "text-primary" style="display: none;"> (Please enter your UserId)</span>
+            <input type="text" class="form-control" id="UserId" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="userid" required>
             <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please read and agree to our terms & conditions</div>
-          </label>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4">Password</label>
+            <span class = "text-primary" style="display: none;"> (Please enter your Password)</span>
+            <input type="password" class="form-control" id="password" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="password" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword">Retype Password</label>
+            <span class = "text-primary" style="display: none;"> (Please retype your Password)</span>
+            <input type="password" class="form-control" id="retypePassword" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="retypePassword" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
         </div>
-      </div>
+        <div class="form-group col-md-6">
+          <label for="First Name">First Name</label>
+          <span class = "text-primary" style="display: none;"> (Please enter your First Name)</span>
+          <input type="text" class="form-control" id="firstName" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="firstName" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Last Name</label>
+          <span class = "text-primary" style="display: none;"> (Please enter your Last Name)</span>
+          <input type="text" class="form-control" id="lastName" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="lastName" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <span class = "text-primary" style="display: none;"> (Please enter your Address)</span>
+          <input type="text" class="form-control" id="address1" placeholder="1234 Main St" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="address" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <span class = "text-primary" style="display: none;"> (Please enter your City)</span>
+            <input type="text" class="form-control" id="inputCity" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="city" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputState">Province</label>
+            <span class = "text-primary" style="display: none;"> (Please select your Province)</span> 
+            <select id="inputState" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="province" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+              <option></option>
+              <option>Alberta</option>
+              <option>British Columbia</option>
+              <option>Manitoba</option>
+              <option>New Brunswick</option>
+              <option>Newfoundland and Labrador</option>
+              <option>Nova Scotia</option>
+              <option>Ontario</option>
+              <option>Prince Edward Island</option>
+              <option>Quebec</option>      
+              <option>Saskatchewan</option>   
+              </select>   
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputZip">Postal Code </label>
+            <span class = "text-primary" style="display: none;"> (Please enter your Postal Code)</span> 
+            <input type="text" class="form-control" id="inputpo" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="postalCode" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputState">Country</label>
+            <span class = "text-primary" style="display: none;"> (Please select your Country)</span> 
+            <select id="inputState" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="country" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+              <option></option>
+              <option>Canada</option>  
+              </select>   
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label" for="gridCheck">
+                <input class="form-check-input" type="checkbox" id="gridCheck" name="remember" required>
+                By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please read and agree to our terms & conditions</div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <button class="buttin" type="submit"onclick="return confirm('Confirm you want to submit the form?')">Submit</button>
+        <button class="buttin" type="reset" onclick="return confirm('Confirm you want to reset the form?')">Reset</button>
+      </form>
     </div>
-    <button class="buttin" type="submit"onclick="return confirm('Confirm you want to submit the form?')">Submit</button>
-    <button class="buttin" type="reset" onclick="return confirm('Confirm you want to reset the form?')">Reset</button>
-    </form>
   </div>
-</div>
 <script src="../JS/register.js"></script>
 </body>
 </html>

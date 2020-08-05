@@ -48,9 +48,9 @@
       <form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated">
       <!--<form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated" onsubmit="return validatePostalCode()">-->
         <div class="form-group">
-          <label for= "packageName" class= "font-weight-bold">Selected Package ID</label>
+          <label for= "packageId" class= "font-weight-bold">Selected Package ID</label>
           <span class="text-primary" style="display: none;"><!--Package Name--></span>
-          <input class= "form-control text-body" type= "text" id= "packageName" name= "packageName" disabled>
+          <input class= "form-control text-body" type= "text" id= "packageId" name= "packageId" disabled>
         </div>
         <div class="form-group">
           <label for= "fname" class= "font-weight-bold">First Name:</label>
@@ -126,6 +126,14 @@
           <input class="form-control text-body" type= "text" id= "email" name= "email" placeholder= "jdoe@gmail.com"
           onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
         </div>
+        <div class= "form-group">  
+          <label for= "tripType" class= "font-weight-bold">Province:</label>
+          <select class="form-control" id= "tripType" name= "tripType" required>
+            <option value= "B">Business</option>
+            <option value= "L">Leisure</option>  
+            <option value= "G">Group</option>
+          </select>
+        </div> 
         
         <!--Buttons to Submit and Reset-->
         <div class= "center">
@@ -140,7 +148,7 @@
 
   <script>
     let packageId = getUrlParameter('packageId');
-    document.getElementById('packageName').value = packageId;
+    document.getElementById('packageId').value = packageId;
     console.log('packageID:', packageId);
 
   </script>

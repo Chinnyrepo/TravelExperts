@@ -96,6 +96,7 @@ app.post('/orderformdata', (req, res) => {
   let orderFormData = [req.body.packageName, req.body.fname];
   //console.log(orderFormData); 
   let customerNum = 0;
+  let bookingNum = 0;
   MongoClient.connect(url, function (err, db) {
       const dbo = db.db("travelexperts");
       // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection
@@ -123,6 +124,10 @@ app.post('/orderformdata', (req, res) => {
           dbo.collection("bookings").insertOne({
               BookingId: autoIndex,
               //BookingDate: req.body.bookingDate,
+              //BookingNo: bookingNum,
+              //TravellerCount: 1,
+              //TripTypeId: req.body.tripType,
+              PackageId: req.body.packageId,
               CustomerId: customerNum
           });
           db.close(); 

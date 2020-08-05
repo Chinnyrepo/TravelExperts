@@ -101,3 +101,7 @@ myInput.onkeyup = function () {
     length.classList.add("invalid");
   }
 }
+
+function redfunction(x){
+  alert("Thank you for logging in");
+}

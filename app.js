@@ -33,7 +33,7 @@ app.post("/contactus", (req, res) => {
        });
      });
     //to redirect the user to thankyou page
-    res.redirect("../html/thankyou");
+    res.redirect("./thankyou1");
  });
 
  // /* GET contact us page. */
@@ -47,6 +47,23 @@ app.get('/contactdata', function (req, res, next) {
       console.log(agents)
     })
   })
+});
+
+// to get data from the registration page and store it in customer collection in the mongodb travelexperts database
+//Oyakhire Airende
+app.post("/registerdata", (req, res) => {
+  //Connecting to the mongodb database
+  MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true }, (err, db) => {
+    if (err) throw err;
+    var dbo = db.db("travelexperts");
+    dbo.collection("customers").insertOne(req.body, (err, res) => {
+      if (err) throw err;
+      console.log("Customer inserted.");
+      db.close();
+    });
+  });
+ //to redirect the user to thankyou page
+ res.redirect("./thankyou3");
 });
 
 /* Serving request for list of packages from packages.html

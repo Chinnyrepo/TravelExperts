@@ -7,7 +7,7 @@
   <title>Travel Experts - Vacation Packages</title>
   
   <!--Adding external CSS-->
-  <link rel="stylesheet" type="text/css" href="../css/stylea.css">
+  <link rel="stylesheet" type="text/css" href="../css/styler.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!--For Bootstrap 4-->
@@ -27,30 +27,33 @@
       <a class="active" href="aboutus.html">About Us</a>
       <a class="active" href="contactus.html">Contact Us</a>
       <a class="active" href="packages.html">Packages</a>
-      <a class="active" href="register.html">Register</a>
+      <a class="active" href="register.html">Register/Log In</a>
     </div>
   </div>
 
+  <br><br>
   <!--Table using bootstrap 4-->
-  <div class= "container">
-    <h2 class= "font-weight-bold">Vacation Packages</h2><br>
-    <div class= "table-container">
-      <table class='table'>
-        <thead class= "font-weight-bolder">
-          <tr>
-            <!--<td>Package ID</td>-->
-            <td>Package Name</td>
-            <td>Start Date</td>
-            <td>End Date</td>
-            <td>Description</td>
-            <td>Base Price</td>
-            <td></td>
-          </tr>
-        </thead>
+  <div class= "container-fluid">
+    <div class="jumbotron">
+      <h1 class= "text-center">Vacation Packages</h1><br>
+      <div class= "table-responsive-sm w-auto">
+        <table class='table table-hover table-fixed'>
+          <thead class= "font-weight-bold">
+            <tr>
+              <!--<td>Package ID</td>-->
+              <td>Package Name</td>
+              <td>Start Date</td>
+              <td>End Date</td>
+              <td>Description</td>
+              <td>Base Price</td>
+              <td></td>
+            </tr>
+          </thead>
 
-        <tbody id='tb1' class= "font-weight-bold text-left">
-        </tbody>
-      </table>
+          <tbody id='tb1' class= "text-left">
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 

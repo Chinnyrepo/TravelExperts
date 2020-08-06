@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // to get data from the contact us page and store it a collection called contactus in the mongodb travelexperts database
+//chinenye okpalanze
 app.post("/contactus", (req, res) => {
      //Connecting to the mongodb database
      MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true }, (err, db) => {
@@ -58,14 +59,27 @@ app.post("/registerdata", (req, res) => {
   MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
     var dbo = db.db("travelexperts");
-    dbo.collection("customers").insertOne(req.body, (err, res) => {
-      if (err) throw err;
-      console.log("Customer inserted.");
-      db.close();
-    });
+    
+    // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection
+    autoIncrement.getNextSequence(dbo, "customers", function (err, autoIndex) {
+      dbo.collection("customers").insertOne({
+          CustomerId: autoIndex,
+          CustFirstName: req.body.firstname,
+          CustLastNme: req.body.lastname,
+          CustAddress: req.body.address,
+          CustCity: req.body.city,
+          CustProv: req.body.province,
+          CustPostal: req.body.postalcode,
+          CustCountry: req.body.country,
+          CustHomePhone: req.body.homephone,
+          CustBusPhone: req.body.busphone,
+          CustEmail: req.body.email,
+          AgentId: 1
+      });  
   });
- //to redirect the user to thankyou page
- res.redirect("./thankyou3");
+  });
+//to redirect the user to thankyou page
+res.redirect("./thankyou3");
 });
 
 /* Serving a request for vacation packages 

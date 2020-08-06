@@ -24,6 +24,16 @@ function myFunction(element, display) {
 
 // Function for postal code validation
 function validate(form){
+  let firstname = document.getElementById("firstname");
+  let lastname = document.getElementById("lastname");
+  let password = document.getElementById("password");
+  let retypepassword = document.getElementById("retypepassword");
+  let email = document.getElementById("email");
+  let homephone = document.getElementById("homephone");
+  let busphone = document.getElementById("businessphone");
+
+  
+  
   let postalCode = document.getElementById("inputpo");
   console.log(postalCode);
   let reg = new RegExp(/[A-Za-z][0-9][A-Za-z]\s[0-9][A-Za-z][0-9]/);
@@ -32,6 +42,55 @@ function validate(form){
     event.preventDefault();
     alert('Invalid postal code.');
     postalCode.focus();
+    return false;
+  }
+
+  if(firstname.value.length <2){
+    event.preventDefault();
+    alert('Invalid firstname.');
+    firstname.focus();
+    return false;
+  }
+  
+  if(lastname.value.length <2){
+    event.preventDefault();
+    alert('Invalid lastname.');
+    lastname.focus();
+    return false;
+  }
+  
+  if(password.value.length < 6){
+    event.preventDefault();
+    alert('Invalid entry: password must contain be more than 8 characters.');
+    password.focus();
+    return false;
+  }
+
+  if(retypepassword.value != password.value){
+    event.preventDefault();
+    alert('Password must match.');
+    password.focus();
+    return false;
+  }
+
+  if(email.indexOf("@") == -1 || email.length < 6){
+    event.preventDefault();
+    alert('Please enter valid Email');
+    email.focus();
+	  return false;
+  }
+
+  if(homephone.value.length < 10){
+    event.preventDefault();
+    alert('Please enter a valid phone number.');
+    homephone.focus();
+    return false;
+  }
+
+  if(busphone.value.length < 10){
+    event.preventDefault();
+    alert('Please enter a valid business phone number.');
+    busphone.focus();
     return false;
   }
 }

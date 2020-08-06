@@ -34,31 +34,30 @@
   <!--Table using bootstrap 4-->
   <div class= "container">
     <h2 class= "font-weight-bold">Vacation Packages</h2><br>
+    <div class= "table-container">
+      <table class='table'>
+        <thead class= "font-weight-bolder">
+          <tr>
+            <!--<td>Package ID</td>-->
+            <td>Package Name</td>
+            <td>Start Date</td>
+            <td>End Date</td>
+            <td>Description</td>
+            <td>Base Price</td>
+            <td></td>
+          </tr>
+        </thead>
 
-    <table class='table'>
-      <thead>
-        <tr>
-          <!--<td>Package ID</td>-->
-          <td>Package Name</td>
-          <td>Start Date</td>
-          <td>End Date</td>
-          <td>Description</td>
-          <td>Base Price</td>
-          <td></td>
-        </tr>
-      </thead>
-
-      <tbody id='tb1'>
-      </tbody>
-    </table>
-
+        <tbody id='tb1' class= "font-weight-bold text-left">
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script>
     let today = new Date();
     $(document).ready(function () {
       $.get("/packages", today, function (data, status) {
-        //info = data;
         if (data != "No Data"){
           const tb1 = document.getElementById('tb1');
           for (let row = 0; row < data.length; row++) {
@@ -81,9 +80,6 @@
                 if (date < today) {
                   td.style = 'color: rgba(255,0,0,1)';
                 }
-                //console.log(data[row][key]);
-                //console.log(date);
-                //console.log('--');
               }
               else if (col == 6) {
                 let price = parseFloat(data[row][key].$numberDecimal);
@@ -92,7 +88,6 @@
               else if (col == 7) {
                 orderButton.setAttribute('type', 'button');
                 orderButton.setAttribute('class', 'btn btn-primary');
-                //orderButton.setAttribute('onclick', 'window.location.href="orderpage.html"');
                 orderButton.setAttribute('onclick', `window.location.href="/orderpage?packageId=${packageId}" `);
                 orderButton.innerText = 'Order';             
                 td.appendChild(orderButton);

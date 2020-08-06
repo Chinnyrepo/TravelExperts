@@ -16,8 +16,6 @@
   <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  <!--External javascript file-->
-  <script src="../JS/register.js"></script>
   <script>
     function getUrlParameter(name) {
       name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -45,37 +43,37 @@
   <div class="container">
     <div class="jumbotron" >
       <h2 class= "font-weight-bold">Customer Order Form</h2><br>
-      <form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated">
-      <!--<form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated" onsubmit="return validatePostalCode()">-->
+      <form action= "/orderformdata" method= "POST" class= "needs-validation" novalidate onsubmit= "validate(this)">
+      <!--<form action= "/orderformdata" method= "POST" id= "orderForm" class="needs-validation" novalidate onsubmit="validate(this)" >
+      <form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated" onsubmit="return validatePostalCode()">-->
         <div class="form-group">
-          <label for= "packageId" class= "font-weight-bold">Selected Package ID</label>
-          <span class="text-primary" style="display: none;"><!--Package Name--></span>
-          <input class= "form-control text-body" type= "text" id= "packageId" name= "packageId" disabled>
+          <label for= "packageId" class= "font-weight-bold text-muted">Selected Package ID</label>
+          <input class= "form-control text-muted" type= "text" id= "packageId" name= "packageId" readonly>
         </div>
         <div class="form-group">
           <label for= "fname" class= "font-weight-bold">First Name:</label>
           <span class="text-primary" style="display: none;">Enter your first name</span>
           <input class= "form-control text-body" type= "text" id= "fname" name= "fname"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div>
-        <!--
+        
         <div class = "form-group">
           <label for= "lname" class= "font-weight-bold">Last Name:</label>
           <span class="text-primary" style="display: none;">Enter your Last name</span>
           <input class="form-control text-body" type= "text" id= "lname" name= "lname"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required >
         </div>
         <div class= "form-group">
           <label for= "address1" class= "font-weight-bold">Address:</label>
           <span class="text-primary" style="display: none;">Enter your address</span>
           <input class="form-control text-body" type= "text" id= "address1" name= "address1" placeholder= "734 7th Ave SW, Suite 234"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div>
         <div class= "form-group">
           <label for= "city" class= "font-weight-bold">City:</label>
           <span class="text-primary" style="display: none;">Enter city of residence</span>
           <input class="form-control text-body" type= "text" id= "city" name= "city" placeholder= "Calgary"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div>
         <div class= "form-group">  
           <label for= "prov" class= "font-weight-bold">Province:</label>
@@ -97,55 +95,54 @@
         </div> 
         <div class= "form-group">  
           <label for= "postCode" class= "font-weight-bold">Postal Code:</label>
-          <span class="text-primary" style="display: none;">Enter your postal code in H0H 0H0 format</span>
+          <span class="text-primary" style="display: none;">Enter postal code in H0H 0H0 format</span>
           <input class="form-control text-body" type= "text" id= "postCode" name= "postCode" placeholder= "H0H 0H0"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div> 
         <div class= "form-group">  
           <label for= "country" class= "font-weight-bold">Country:</label>
-          <span class="text-primary" style="display: none;">Enter your Country</span>
+          <span class="text-primary" style="display: none;">Enter Country of Residence</span>
           <input class="form-control text-body" type= "text" id= "country" name= "country" placeholder= "Canada"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div> 
         <div class= "form-group">  
           <label for= "homePhone" class= "font-weight-bold">Phone Number (Home):</label>
           <span class="text-primary" style="display: none;">Enter a home phone number</span>
           <input class="form-control text-body" type= "text" id= "homePhone" name= "homePhone" placeholder= "403-123-4567"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div> 
         <div class= "form-group">
           <label for= "busPhone" class= "font-weight-bold">Phone Number (Work):</label>
           <span class="text-primary" style="display: none;">Enter a work phone number</span>
           <input class="form-control text-body" type= "text" id= "busPhone" name= "busPhone" placeholder= "403-123-4567"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" >
         </div>
-        --> 
+         
         <div class= "form-group">
           <label for= "email" class= "font-weight-bold">Email address:</label>
           <span class="text-primary" style="display: none;">Enter email address</span>
           <input class="form-control text-body" type= "text" id= "email" name= "email" placeholder= "jdoe@gmail.com"
-          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required onkeyup= "enableButton()">
+          onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required >
         </div>
         <div class= "form-group">  
-          <label for= "tripType" class= "font-weight-bold">Province:</label>
+          <label for= "tripType" class= "font-weight-bold">Trip Type</label>
           <select class="form-control" id= "tripType" name= "tripType" required>
+            <option value= "L">Leisure</option>
             <option value= "B">Business</option>
-            <option value= "L">Leisure</option>  
             <option value= "G">Group</option>
           </select>
         </div> 
         
         <!--Buttons to Submit and Reset-->
-        <div class= "center">
-          <button onclick= "submitForm()" class= "btn btn-primary" id= "submitButton">Submit</button>
-          <!--<button onclick= "submitForm()" class= "btn btn-primary" id= "submitButton" disabled>Submit</button>-->
-          <button onclick= "resetForm()" class= "btn btn-primary">Reset</button>
-        </div>
+        <button class="buttin" type="submit"onclick="return confirm('Confirm you want to submit the form?')">Submit</button>
+        <button class="buttin" type="reset" onclick="return confirm('Confirm you want to reset the form?')">Reset</button>
       </form> 
 
     </div>
   </div>
 
+  <script src="../JS/register.js"></script>
+  
   <script>
     let packageId = getUrlParameter('packageId');
     document.getElementById('packageId').value = packageId;

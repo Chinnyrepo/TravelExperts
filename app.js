@@ -8,6 +8,7 @@ let url = "mongodb://localhost:27017/";
 var autoIncrement = require("mongodb-autoincrement");
 const bodyParser = require("body-parser");
 const data = require('./models/datamongo');
+const random = require('./models/randomModule');
 
 module.exports = app;
 
@@ -67,7 +68,7 @@ app.post("/registerdata", (req, res) => {
  res.redirect("./thankyou3");
 });
 
-/* Serving request for list of packages from packages.html
+/* Serving a request for vacation packages 
 ** Edwin GonoSantosa*/
 app.get('/packages', (req, res) => {
   //Query PACKAGES collection from TRAVELEXPERTS database
@@ -90,19 +91,22 @@ app.get('/packages', (req, res) => {
   }); 
 });
 
-/* Serving request to submit data from the order form to the database
+/* Serving a request to submit data from the order form to the database
 ** Edwin GonoSantosa*/
 app.post('/orderformdata', (req, res) => {
-  let orderFormData = [req.body.packageName, req.body.fname];
-  //console.log(orderFormData); 
+  // Variable definitions  
+  let reserveDate = new Date();
+  let bookingNum = random.getRandomString(5);
   let customerNum = 0;
-  let bookingNum = 0;
+  let tripType = parseInt(req.body.tripType);
+  let packageNum = req.body.packageId;
+
+  // Open connections to the database to insert documents into certain collections
   MongoClient.connect(url, function (err, db) {
       const dbo = db.db("travelexperts");
       // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection
       autoIncrement.getNextSequence(dbo, "customers", function (err, autoIndex) {
           customerNum = autoIndex;
-
           dbo.collection("customers").insertOne({
               CustomerId: autoIndex,
               CustFirstName: req.body.fname,
@@ -123,18 +127,19 @@ app.post('/orderformdata', (req, res) => {
       autoIncrement.getNextSequence(dbo, "bookings", function (err, autoIndex) {
           dbo.collection("bookings").insertOne({
               BookingId: autoIndex,
-              //BookingDate: req.body.bookingDate,
-              //BookingNo: bookingNum,
-              //TravellerCount: 1,
-              //TripTypeId: req.body.tripType,
-              PackageId: req.body.packageId,
-              CustomerId: customerNum
+              BookingDate: reserveDate,
+              BookingNo: bookingNum,
+              TravellerCount: 1,
+              CustomerId: customerNum,
+              TripTypeId: tripType,
+              PackageId: packageNum
           });
           db.close(); 
       });
       //db.close();  /do not close db here. otherwise insert record to customers AND bookings won't happen
   });
-  res.end();
+  //res.end();
+  res.redirect("./thankyou2.html");
 });
 
 //Serving static files in Express

@@ -33,6 +33,7 @@
 
   <br><br>
   <!--Table using bootstrap 4-->
+  <!--Adam Zukowski-->
   <div class= "container-fluid">
     <div class="jumbotron">
       <h1 class= "text-center">Vacation Packages</h1><br>
@@ -58,6 +59,8 @@
   </div>
 
   <script>
+  /* Sending AJAX request to query database and present the data on the packages.hmtl page
+   * Edwin GonoSantosa */
     let today = new Date();
     $(document).ready(function () {
       $.get("/packages", today, function (data, status) {
@@ -66,7 +69,7 @@
           for (let row = 0; row < data.length; row++) {
             const tr = document.createElement('tr');
 
-            //for (let col = 1; col < Object.keys(data[row]).length; col++) {
+            //for (let col = 2; col < Object.keys(data[row]).length; col++) {
             for (let col = 2; col < 8; col++) {
               const td = document.createElement('td');
               const orderButton = document.createElement('button');

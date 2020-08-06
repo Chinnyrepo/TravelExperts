@@ -59,7 +59,7 @@ function validate(form){
     return false;
   }
   
-  if(password.value.length < 2){
+  if(password.value.length < 6){
     event.preventDefault();
     alert('Invalid entry: password must contain be more than 8 characters.');
     password.focus();

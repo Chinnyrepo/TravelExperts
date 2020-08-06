@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // to get data from the contact us page and store it a collection called contactus in the mongodb travelexperts database
+//chinenye okpalanze
 app.post("/contactus", (req, res) => {
      //Connecting to the mongodb database
      MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true }, (err, db) => {

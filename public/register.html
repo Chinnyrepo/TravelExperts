@@ -50,13 +50,13 @@
           <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>
             <span class = "text-primary" style="display: none;"> (Please enter your Password)</span>
-            <input type="password" class="form-control" id="password" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="password" required>
+            <input type="password" class="form-control" id="password" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="password" placeholder="Password must be greater than 6 characters" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword">Retype Password</label>
             <span class = "text-primary" style="display: none;"> (Please retype your Password)</span>
-            <input type="password" class="form-control" id="retypepassword" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="retypepassword" required>
+            <input type="password" class="form-control" id="retypepassword" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="retypepassword" placeholder="Password must be greater than 6 characters" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
         </div>
@@ -70,13 +70,13 @@
           <div class="form-group col-md-6">
             <label for="inputCity">City</label>
             <span class = "text-primary" style="display: none;"> (Please enter your City)</span>
-            <input type="text" class="form-control" id="inputCity" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="city" required>
+            <input type="text" class="form-control" id="inputCity" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="city" placeholder="Calgary" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputState">Province</label>
+            <label for="inputProvince">Province</label>
             <span class = "text-primary" style="display: none;"> (Please select your Province)</span> 
-            <select id="inputState" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="province" required>
+            <select id="inputProvince" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="province" placeholder="Alberta" required>
               <div class="invalid-feedback">Please fill out this field.</div>
               <option></option>
               <option>Alberta</option>
@@ -94,13 +94,13 @@
           <div class="form-group col-md-6">
             <label for="inputZip">Postal Code </label>
             <span class = "text-primary" style="display: none;"> (Please enter your Postal Code)</span> 
-            <input type="text" class="form-control" id="inputpo" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="postalcode" required>
+            <input type="text" class="form-control" id="inputpo" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="postalcode" placeholder="H0H 0H0" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputState">Country</label>
+            <label for="inputCountry">Country</label>
             <span class = "text-primary" style="display: none;"> (Please select your Country)</span> 
-            <select id="inputState" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="country" required>
+            <select id="inputCountry" class="form-control" class="texting" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="country" placeholder="Canada" required>
               <div class="invalid-feedback">Please fill out this field.</div>
               <option></option>
               <option>Canada</option>  
@@ -109,19 +109,19 @@
           <div class="form-group col-md-4">
             <label for="homephone">Home Phone</label>
             <span class = "text-primary" style="display: none;"> (Please enter your Home Phone)</span>
-            <input type="number" class="form-control" id="homephone" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="homephone" required>
+            <input type="number" class="form-control" id="homephone" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="homephone" placeholder="4035583276" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="form-group col-md-4">
             <label for="businessphone">Business Phone</label>
             <span class = "text-primary" style="display: none;"> (Please enter your Bus Phone)</span>
-            <input type="number" class="form-control" id="businessphone" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="busphone" required>
+            <input type="number" class="form-control" id="businessphone" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="busphone" placeholder="4035583276" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="form-group col-md-4">
             <label for="email">Email</label>
             <span class = "text-primary" style="display: none;"> (Please enter your Email Address)</span>
-            <input type="text" class="form-control" id="email" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="email" required>
+            <input type="text" class="form-control" id="email" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" onclick="BlueFunction(this)" name="email" placeholder="jdoes@gmail.com" required>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="form-group">
@@ -140,22 +140,23 @@
     </div>
   </div>
 
+  <!-- Oyakhire Airende  -->
   <div class="container">
     <div class="jumbotron">
       <h1>Welcome Back!</h1>
-  <form action="" method="" onsubmit="redfunction(this)">
+  <form action="/log-in" method="POST" onsubmit="redfunction(this)">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Registered Email</label>
         <span class = "text-primary" style="display: none;"> (Please enter your Registered Email)</span>
-        <input type="text" class="form-control" id="email4" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="email4" required>
+        <input type="text" class="form-control" id="email4" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="email" required>
         <div class="valid-feedback">Valid .</div>
         <div class="invalid-feedback">Please Enter a Valid Email Address.</div>
       </div>
       <div class="form-group col-md-6">
         <label for="password">Password</label>
         <span class = "text-primary" style="display: none;"> (Please enter your Password)</span>
-        <input type="password" class="form-control" id="password1" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="password1" required>
+        <input type="password" class="form-control" id="password1" onfocus="myFunction(this, '')" onblur="myFunction(this, 'none')" name="password" required>
         <div class="valid-feedback">Valid.</div>
         <div class="invalid-feedback">Please Enter a Valid Password.</div>
       </div>

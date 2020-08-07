@@ -1,6 +1,6 @@
 //Chinenye Okpalanze
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb+srv://chika:applebaum@cluster0.y8ywx.mongodb.net/travelexperts?retryWrites=true&w=majority";
 
 exports.getContactData = (agencyId, callBack) => {
 

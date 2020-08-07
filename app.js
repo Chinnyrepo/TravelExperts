@@ -1,10 +1,10 @@
 //import modules
-const port = 8000;
+const port = 8080;
 const path = require("path");
-const express = require("express");
-const app = express();
+const express = require("express");
+const app = express();
 let MongoClient = require('mongodb').MongoClient;
-let url = "mongodb://localhost:27017/";
+let url = "mongodb+srv://chika:applebaum@cluster0.y8ywx.mongodb.net/travelexperts?retryWrites=true&w=majority";
 var autoIncrement = require("mongodb-autoincrement");
 const bodyParser = require("body-parser");
 const data = require('./models/datamongo');
@@ -196,7 +196,7 @@ app.post('/orderformdata', (req, res) => {
   res.redirect("./thankyou2.html");
 });
 
-//This is for debuging purposes
+//This is for debugging purposes
 /* 
 app.get("/debug", (req, res) => {
   let randomVar = random.getRandomInt(3);
@@ -213,11 +213,11 @@ app.use(express.static("public", {
 //Endpoint handler for error page
 app.get("*", (req, res) => {
   // /to render error page
-  res.status(404).send("<h1>404: Sorry can't find that!</h1>");
+  res.status(404).send("<h1>404: Sorry can't find that!</h1>");
 });
 
-//Listening function on port 8000
-app.listen(8000, (err) => {
+//Listening function on port 8080
+app.listen(8080, (err) => {
   if (err) throw err;
   console.log(`Server is listening on port ${port}`);
 });

@@ -138,10 +138,10 @@ app.post('/orderformdata', (req, res) => {
     console.log("prod supp id: ", ProdSuppId); 
   });
   
-  /*
+  
   // Open a connection to the database to insert documents into certain collections
-  MongoClient.connect(url, function (err, db) {
-      const dbo = db.db("travelexperts");
+   MongoClient.connect(url, function (err, db) {
+       const dbo = db.db("travelexperts");
       
   // Insert a document into CUSTOMERS collection
   // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection

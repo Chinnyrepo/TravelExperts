@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 // automatically check if requested file is found in /public
 // if yes, return that file as a response to the browser
 app.use(express.static(path.join(__dirname, 'public')));
@@ -55,7 +54,6 @@ module.exports = (app) => {
       });
   });
 
- 
   // initialize Passport
   app.use(passport.initialize());
   // initialize session

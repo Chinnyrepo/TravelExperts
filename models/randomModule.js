@@ -9,6 +9,14 @@ exports.getRandomString = function(length) {
     return result;
 }
 
+/*Function to generate random integers of certain length
+ *Chikaodili Ikechukwu*/
+exports.getRandomInt = function(length) {
+    let randomInt= Math.floor( Math.random() * Math.pow(10, length ) );
+    return randomInt;
+
+}
+
 /*Function to generate random greetings
  *Edwin GonoSantosa*/
 let greetingArray = ['Welcome', 'Bienvenue', 'Welkom','Willkommen','Ahlan Wa Sahlan',

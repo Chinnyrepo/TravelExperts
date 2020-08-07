@@ -36,16 +36,14 @@
       <a class="active" href="aboutus.html">About Us</a>
       <a class="active" href="contactus.html">Contact Us</a>
       <a class="active" href="packages.html">Packages</a>
-      <a class="active" href="register.html">Register</a>
+      <a class="active" href="register.html">Register/Log In</a>
     </div>
   </div>
   
   <div class="container">
     <div class="jumbotron" >
-      <h2 class= "font-weight-bold">Customer Order Form</h2><br>
+      <h2 class= "text-center">Order Form</h2><br>
       <form action= "/orderformdata" method= "POST" class= "needs-validation" novalidate onsubmit= "validate(this)">
-      <!--<form action= "/orderformdata" method= "POST" id= "orderForm" class="needs-validation" novalidate onsubmit="validate(this)" >
-      <form action= "/orderformdata" method= "POST" id= "orderForm" class="was-validated" onsubmit="return validatePostalCode()">-->
         <div class="form-group">
           <label for= "packageId" class= "font-weight-bold text-muted">Selected Package ID</label>
           <input class= "form-control text-muted" type= "text" id= "packageId" name= "packageId" readonly>
@@ -108,13 +106,13 @@
         <div class= "form-group">  
           <label for= "homePhone" class= "font-weight-bold">Phone Number (Home):</label>
           <span class="text-primary" style="display: none;">Enter a home phone number</span>
-          <input class="form-control text-body" type= "text" id= "homePhone" name= "homePhone" placeholder= "403-123-4567"
+          <input class="form-control text-body" type= "text" id= "homePhone" name= "homePhone" placeholder= "4035864567"
           onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" required>
         </div> 
         <div class= "form-group">
           <label for= "busPhone" class= "font-weight-bold">Phone Number (Work):</label>
           <span class="text-primary" style="display: none;">Enter a work phone number</span>
-          <input class="form-control text-body" type= "text" id= "busPhone" name= "busPhone" placeholder= "403-123-4567"
+          <input class="form-control text-body" type= "text" id= "busPhone" name= "busPhone" placeholder= "4035874239"
           onfocus="myFunction(this, 'inline')" onblur="myFunction(this, 'none')" >
         </div>
          
@@ -132,7 +130,7 @@
             <option value= "G">Group</option>
           </select>
         </div> 
-        
+
         <!--Buttons to Submit and Reset-->
         <button class="buttin" type="submit"onclick="return confirm('Confirm you want to submit the form?')">Submit</button>
         <button class="buttin" type="reset" onclick="return confirm('Confirm you want to reset the form?')">Reset</button>
@@ -144,9 +142,10 @@
   <script src="../JS/register.js"></script>
   
   <script>
+    // Populating Package ID input test field on the form
     let packageId = getUrlParameter('packageId');
     document.getElementById('packageId').value = packageId;
-    console.log('packageID:', packageId);
+    //console.log('packageID:', packageId);
 
   </script>
 

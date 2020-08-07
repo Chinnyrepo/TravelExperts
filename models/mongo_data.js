@@ -2,8 +2,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-
-  //create a collection in the travelexperts database called contact Us where information received from the contact Us form will be stored
+//create a collection in the travelexperts database called contact Us where information received from the contact Us form will be stored
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("travelexperts");

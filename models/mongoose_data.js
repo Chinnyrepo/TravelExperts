@@ -3,9 +3,9 @@ const Customers = require('./user.model')
 const bcrypt = require('bcryptjs')
 
 
-// Creates a new user
+// Creates a new Customer
 exports.createUser = function (customers, callBack) {
-    //encrypt the password then store the encrypted password in the DB with the rest of the user info
+    //encrypt the password then store the encrypted password in the DB with the rest of the customer info
     bcrypt.hash(customers.password, 10, (err, hashedPassword) => {
         customers.password = hashedPassword;  // replace the password with it's encrypted version
         const myuser = new Customers(customers);  // User Mongoose Model
@@ -23,14 +23,14 @@ exports.getUser = function (email, callBack) {
     });
 }
 
-// Checks the user credentials. 
-// if email & password, returns the user object. Oherwise returns a message
+// Checks the customer credentials. 
+// if email & password, returns the customer object. Oherwise returns a message
 exports.verifyLogin = function (email, password, callBack) {
     Customers.findOne({ CustEmail }, (err, customers) => {
         if (err) return callBack(err);
-        // If username not found
+        // If email not found
         if (!customers) return callBack(null, false, { message: "Incorrect email" });
-        //compare the given password with the store encyption
+        //compare the given password with the stored encyption
         bcrypt.compare(password, customers.password, (err, res) => {
             if (err) return callBack(err);
             if (res) {

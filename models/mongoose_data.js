@@ -34,10 +34,10 @@ exports.verifyLogin = function (email, password, callBack) {
         bcrypt.compare(password, customers.password, (err, res) => {
             if (err) return callBack(err);
             if (res) {
-                // passwords match! log user in
+                //passwords match!log user in
                 return callBack(null, customers);
             } else {
-                // passwords do not match!
+                //passwords do not match!
                 return callBack(null, false, { message: "Incorrect password" });
             }
         })

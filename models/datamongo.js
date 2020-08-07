@@ -1,6 +1,6 @@
 //Chinenye Okpalanze
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb+srv://chika:applebaum@cluster0.y8ywx.mongodb.net/travelexperts?retryWrites=true&w=majority";
 
 exports.getContactData = (agencyId, callBack) => {
 
@@ -26,3 +26,32 @@ function getData(collection, arguments, callBack) {
     });
 }
 
+/* function to retrieve details of a vacation package
+** Edwin GonoSantosa */
+exports.getPackageData = (collection, targetId, callBack) => {
+    MongoClient.connect(url, (err, db) => {
+        if (err) throw err;
+        const dbo = db.db("travelexperts");
+        var query = { "PackageId" : targetId };
+        dbo.collection(collection).findOne(query, { projection : {_id: 0, PkgDesc: 0 } }, function(err, result) {
+          if (err) throw err;
+          callBack(null, result);
+          db.close();
+        });
+    });
+}
+
+/* function to retrieve product-supplier id of a vacation package
+** Edwin GonoSantosa */
+exports.getProductSupplierId = (collection, targetId, callBack) => {
+    MongoClient.connect(url, (err, db) => {
+        if (err) throw err;
+        const dbo = db.db("travelexperts");
+        var query = { "PackageId" : targetId };
+        dbo.collection(collection).find(query, { projection : {_id: 0 } }).toArray(function(err, result) {
+          if (err) throw err;
+          callBack(null, result);
+          db.close();
+        });
+    });
+}

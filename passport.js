@@ -1,8 +1,8 @@
 var express = require('express');
-const port = 8000;
+const port = 8080;
 const path = require("path");
 const data = require('./models/mongoose_data')
-const app = express();
+const app = express();
 let Customers = require('./models/user.model');
 const bodyParser = require("body-parser");
 // Configures app for Authentication using Passport.js
@@ -120,11 +120,11 @@ app.post("/registerdata", (req, res, next) => {
 //Endpoint handler for error page
 app.get("*", (req, res) => {
   // /to render error page
-  res.status(404).send("<h1>404: Sorry can't find that!</h1>");
+  res.status(404).send("<h1>404: Sorry can't find that!</h1>");
 });
 
-//Listening function on port 8000
-app.listen(8000, (err) => {
+//Listening function on port 8080
+app.listen(8080,(err) => {
   if (err) throw err;
   console.log(`Server is listening on port ${port}`);
 });

@@ -10,7 +10,7 @@ exports.getRandomString = function(length) {
 }
 
 /*Function to generate random integers of certain length
- *Chikaodili Ikechukwu*/
+ *Adam Zukowski*/
 exports.getRandomInt = function(length) {
     let randomInt= Math.floor( Math.random() * Math.pow(10, length ) );
     return randomInt;

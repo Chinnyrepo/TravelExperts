@@ -28,7 +28,7 @@ Model: containing the connection to the database
 datamongo, mongo_data, mongoose_connect. mongoose_data, randomModule, user.Model
 
 - app.js
-- passpoert.js
+- passport.js
 
 
 ## DesignContributions.

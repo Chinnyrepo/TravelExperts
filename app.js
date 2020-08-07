@@ -22,6 +22,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // if yes, return that file as a response to the browser
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Serving static files in Express
+app.use(express.static("public", {
+  extensions: ["html", "css", "js", "jpg" , "jpeg", "png", "gif"]
+}));
+
 // to get data from the contact us page and store it a collection called contactus in the mongodb travelexperts database
 //chinenye okpalanze
 app.post("/contactus", (req, res) => {
@@ -79,7 +84,7 @@ app.post("/registerdata", (req, res) => {
       });  
   });
   });
-//to redirect the user to thankyou page
+//to redirect the customer to thankyou page
 res.redirect("./thankyou3");
 });
 
@@ -139,8 +144,8 @@ app.post('/orderformdata', (req, res) => {
   MongoClient.connect(url, function (err, db) {
       const dbo = db.db("travelexperts");
       
-      // Insert a document into CUSTOMERS collection
-      // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection
+  // Insert a document into CUSTOMERS collection
+  // Use a node module to sequentially increment CustomerId field in the CUSTOMERS collection
       autoIncrement.getNextSequence(dbo, "customers", function (err, autoIndex) {
         customerNum = autoIndex;
         dbo.collection("customers").insertOne({
@@ -205,11 +210,6 @@ app.get("/debug", (req, res) => {
   res.send(randomVar.toString(10));
 });
 */
-
-//Serving static files in Express
-app.use(express.static("public", {
-    extensions: ["html", "css", "js", "jpg" , "jpeg", "png", "gif"]
-}));
 
 //Endpoint handler for error page
 app.get("*", (req, res) => {

@@ -1,9 +1,9 @@
 # Web Application Development
 
-Project / Course Name = Proj-207 Travel Expert
-Course Module = CPRG 210 XM5
-Designed By = Adam Zukowski, Chikaodili Ikechukwu, Chinenye Okpalanze, Edwin Gono Santosa and Oyakhire Airende
-Design Date = 7th August, 2020
+Project / Course Name => Proj-207 Travel Expert
+Course Module => CPRG 210 XM5
+Designed By => Adam Zukowski, Chikaodili Ikechukwu, Chinenye Okpalanze, Edwin Gono Santosa and Oyakhire Airende
+Design Date => 7th August, 2020
 
 
 ## Design Specifications
@@ -33,4 +33,4 @@ datamongo, mongo_data, mongoose_connect. mongoose_data, randomModule, user.Model
 
 ## DesignContributions.
 
-- The design work was an equal contribution by the team members but the individual contributions can be seen in various html,css, js and model files.
+- The design work was an equal contribution by the team members, but the individual contributions can be seen in various html,css, js and model files.

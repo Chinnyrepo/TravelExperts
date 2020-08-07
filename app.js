@@ -197,18 +197,8 @@ app.post('/orderformdata', (req, res) => {
         //db.close(); 
       })
   });
-  */
   res.redirect("./thankyou2.html");
 });
-
-//This is for debugging purposes
-/* 
-app.get("/debug", (req, res) => {
-  let randomVar = random.getRandomInt(3);
-  console.log(randomVar);
-  res.send(randomVar.toString(10));
-});
-*/
 
 //Endpoint handler for error page
 app.get("*", (req, res) => {

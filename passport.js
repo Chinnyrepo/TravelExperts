@@ -24,36 +24,6 @@ app.use(express.static("public", {
   extensions: ["html", "css", "js", "jpg" , "jpeg", "png", "gif"]
 }));
 
-
-module.exports = (app) => {
-  // Allows us to assign every user of the app a unique session, which allows us to store user state (are they logged in?)
-  // secret is used to sign the session ID cookie – should be a random unique string
-  app.use(session({
-      secret: "myTravelWebsite secret",
-      resave: false,
-      saveUninitialized: true
-  }));
-  // To show login messages while redirecting. e.g. 'Incorrect Username'
-  app.use(flash());
-
-  // The login function
-  passport.use(
-      new LocalStrategy((email, password, done) => {
-          //console.log(email, password)
-          return data.verifyLogin(email, password, done)
-      }));
-
-  // User to store user data between requests
-  // Allows the user to stay logged in for the same session
-  passport.serializeUser(function (customers, done) {
-      done(null, customers.email);
-  });
-  passport.deserializeUser(function (email, done) {
-      data.getUser(email, function (err, customers) {
-          done(err, customers);
-      });
-  });
-
   // initialize Passport
   app.use(passport.initialize());
   // initialize session
@@ -63,33 +33,6 @@ module.exports = (app) => {
       res.locals.currentCustomers = req.customers;
       next();
   });
-
- // User Login API 
-  app.post( 
-      "/log-in",
-      passport.authenticate("local", {
-          successRedirect: "/",
-          failureRedirect: "/",
-          failureFlash: true
-      })
-  );
-  app.get("/log-out", (req, res) => { // User logout API
-      req.logout();
-      res.redirect("/");
-  });
-}
-
-module.exports = app;
-/* GET users listing. */
-app.get('/', function (req, res, next) {
-  console.log(req.query.email) // Get the user by email
-  if (!req.query.email) return res.send(null); // Check if there is a value for the email
-  data.getUser(req.query.email, (err, data) => {
-    //console.log('In User Router')
-    //console.log(err, data)
-    res.send(data)  // Send back the results
-  })
-});
 
 //Creates a new Customer
 app.post("/registerdata", (req, res, next) => {
@@ -106,8 +49,6 @@ app.post("/registerdata", (req, res, next) => {
     CustBusPhone: req.body.busphone,
     CustEmail: req.body.email,
   });
-  
-  //console.log(JSON.stringify(req.body));
   data.createUser(customers, (err, message) => {
     if (err) return res.status(500).send('Error ' + err);
     res.redirect("./thankyou3");

@@ -16,33 +16,4 @@ exports.createUser = function (customers, callBack) {
     });
 }
 
-// Get the user using the email (_id)
-exports.getUser = function (email, callBack) {
-    Customers.findByEmail(CustEmail, (err, data) => {
-        callBack(err, data); // Send the results back
-    });
-}
-
-// Checks the customer credentials. 
-// if email & password, returns the customer object. Oherwise returns a message
-exports.verifyLogin = function (email, password, callBack) {
-    Customers.findOne({ CustEmail }, (err, customers) => {
-        if (err) return callBack(err);
-        // If email not found
-        if (!customers) return callBack(null, false, { message: "Incorrect email" });
-        //compare the given password with the stored encyption
-        bcrypt.compare(password, customers.password, (err, res) => {
-            if (err) return callBack(err);
-            if (res) {
-                //passwords match!log user in
-                return callBack(null, customers);
-            } else {
-                //passwords do not match!
-                return callBack(null, false, { message: "Incorrect password" });
-            }
-        })
-    });
-}
-
-
     

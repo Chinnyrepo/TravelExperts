@@ -122,11 +122,10 @@ app.post('/orderformdata', (req, res) => {
   ** the bookingdetails collection */
   data.getPackageData("packages", packageNum, (error, result) => {
     if (error) return res.status(500).send('Error ' + error);
-    console.log('packages_data:', result);
+    //console.log('packages_data:', result);
   });
 
-  // Retrieve product supplier id for the selected vacation package from the 
-  // PACKAGES_PRODUCTS_SUPPLIERS Collection
+  // Retrieve product supplier id for the selected vacation package from the PACKAGES_PRODUCTS_SUPPLIERS Collection
    /* Issue to resolve: capture the data from callback function call to populate
   ** the bookingdetails collection */
   data.getProductSupplierId("packages_products_suppliers", packageNum, (error, ProdSuppId) => {
@@ -134,7 +133,7 @@ app.post('/orderformdata', (req, res) => {
     console.log("prod supp id: ", ProdSuppId); 
   });
   
-  
+  /*
   // Open a connection to the database to insert documents into certain collections
   MongoClient.connect(url, function (err, db) {
       const dbo = db.db("travelexperts");
@@ -176,24 +175,24 @@ app.post('/orderformdata', (req, res) => {
       // Insert a document into BOOKINGDETAILS collection
       autoIncrement.getNextSequence(dbo, "bookingdetails", function (err, autoIndex) {
         dbo.collection("bookingdetails").insertOne({
-          BookingDetailId: bookingNum,
+          BookingDetailId: autoIndex,
           ItineraryNo: randomNum,
-          //TripStart: packageData[0].PkgStartDate,
-          //TripEnd: packageData[0].PkgEndDate,
-          //Description: packageData[0].PkgName,
+          TripStart: req.body.PkgStartDate,
+          TripEnd: req.body.PkgEndDate,
+          Description: req.body.PkgName,
           Destination: '',
-          //BasePrice: packageData[0].PkgBasePrice,
-          //AgencyCommission: packageData[0].PkgAgencyCommission,
+          BasePrice: req.body.PkgBasePrice,
+          AgencyCommission: req.body.PkgAgencyCommission,
           BookingId: bookingNum,
           RegionId: '',
           ClassId: '',
           FeeId: '',
-          //ProductSupplierId: ProdSuppId[0].ProductSupplierId 
+          ProductSupplierId: req.body.ProductSupplierId 
         });
         //db.close(); 
       })
   });
-  
+  */
   res.redirect("./thankyou2.html");
 });
 

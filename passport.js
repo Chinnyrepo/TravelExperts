@@ -55,6 +55,15 @@ app.post("/registerdata", (req, res, next) => {
   });
 });
 
+app.post('/login', (req, res)=>{
+  Customers.login(req.body.email, req.body.password, (err, result) =>{
+    if (err){
+      return res.json ({success: false, message:err});
+    }
+    return res.json({success: true, message:res});
+  });
+}),
+
 
 //Endpoint handler for error page
 app.get("*", (req, res) => {

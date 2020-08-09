@@ -4,7 +4,7 @@
   "description": "TravelExpertWebsite",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon passport.js",
     "nm": "nodemon app.js"
   },
   "dependencies": {

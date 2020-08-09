@@ -6,22 +6,21 @@ const customersSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true
+        unique:false
     },
     CustLastName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    password: {
         type: String,
         required: true,
         trim: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true,
-        trim: true
-    },
     retypepassword: {
         type: String,
-        required: true,
         trim: true
     },
     CustAddress: String,

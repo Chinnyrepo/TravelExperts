@@ -1,7 +1,7 @@
 //Chinenye Okpalanze
 const mongoose = require('mongoose');
-const url = "mongodb+srv://chika:applebaum@cluster0.y8ywx.mongodb.net/travelexperts?retryWrites=true&w=majority";
-
+// const url = "mongodb+srv://chika:applebaum@cluster0.y8ywx.mongodb.net/travelexperts?retryWrites=true&w=majority";
+const url = "mongodb://localhost:27017/travelexperts";
 // Set up a mongoose connection
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 // Get the connection
